@@ -1,0 +1,86 @@
+@function pow($num, $exp)
+  $val: 1
+  @if ($exp > 0)
+    @for $i from 1 through $exp
+      $val: $val * $num
+  @else if ($exp < 0)
+    @for $i from 1 through -$exp
+      $val: $val / $num
+  @return $val
+
+@function lineHeight($rem)
+  @if ($rem < 1)
+    @return $baseline-height
+  @else
+    @return ceil($rem / $baseline-height) * ($baseline-height / $rem)
+
+=font($exp)
+  $rem: pow($ratio, $exp) * 1rem
+  $smallRem: $rem / $ratio
+  $leadRem: $rem * $ratio
+
+  font:
+    size: $rem
+    @content
+  line-height: lineHeight($rem)
+
+  &.small, small, .small
+    font:
+      size: $rem / $ratio
+      @content
+    line-height: lineHeight($smallRem)
+
+  &.lead, .lead
+    font:
+      size: $rem * $ratio
+      @content
+    line-height: lineHeight($leadRem)
+
+
+=text-align($screen-size)
+  .text#{$screen-size}-right
+    text-align: right
+  .text#{$screen-size}-center
+    text-align: center
+  .text#{$screen-size}-left
+    text-align: left
+  .text#{$screen-size}-justify
+    text-align: justify
+  .text#{$screen-size}-right-last
+    text-align-last: right
+  .text#{$screen-size}-center-last
+    text-align-last: center
+  .text#{$screen-size}-left-last
+    text-align-last: left
+  .text#{$screen-size}-justify-last
+    text-align-last: justify
+
+=text-transform($screen-size)
+  .text#{$screen-size}-uppercase
+    text-transform: uppercase
+  .text#{$screen-size}-lowercase
+    text-transform: lowercase
+  .text#{$screen-size}-capitalize
+    text-transform: capitalize
+  .text#{$screen-size}-small-caps
+    font-variant-caps: small-caps
+  .text#{$screen-size}-all-small-caps
+    font-variant-caps: all-small-caps
+  .text#{$screen-size}-no-transform
+    text-transform: none
+
+=text-decoration($screen-size)
+  .text#{$screen-size}-underline
+    text-decoration: underline
+  .text#{$screen-size}-overline
+    text-decoration: overline
+  .text#{$screen-size}-strike
+    text-decoration: line-through
+  .text#{$screen-size}-under-over
+    text-decoration: underline overline
+  .text#{$screen-size}-under-strike
+    text-decoration: underline line-through
+  .text#{$screen-size}-under-over-strike
+    text-decoration: underline overline line-through
+  .text#{$screen-size}-over-strike
+    text-decoration: overline line-through

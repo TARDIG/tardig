@@ -1,0 +1,25 @@
+@import '../variables'
+
+@for $i from 1 through $columns
+  $col-list: 100% / $columns * $i
+  $gradient-list: append($gradient-list, "transparent calc(#{$col-list} - #{$gutter})", comma)
+  $gradient-list: append($gradient-list, "#{$gutter-color} calc(#{$col-list} - #{$gutter})", comma)
+  $gradient-list: append($gradient-list, "#{$gutter-color} calc(#{$col-list} + #{$gutter})", comma)
+  $gradient-list: append($gradient-list, "transparent calc(#{$col-list} + #{$gutter})", comma)
+
+.development-grid
+  .container
+    background-image: linear-gradient(90deg, #{$gradient-list}) !important
+    *
+      opacity: 0.9
+
+.development-codeframe
+  .container
+    border: 1px dashed red
+  .row,
+  [class*='block-grid-']
+    border: 1px dashed green
+  [class*='col-'],
+  [class*='block-grid-'] > .block-item,
+  [class*='block-grid-'] > li
+    border: 1px dashed blue
