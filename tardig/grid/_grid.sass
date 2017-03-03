@@ -13,16 +13,12 @@
 [class*='col-']::after,
 [class*='block-grid-'],
 [class*='block-grid-']::before,
-[class*='block-grid-']::after
+[class*='block-grid-']::after,
+[class*='block-grid-'] > li,
+[class*='block-grid-'] > .block-item
   margin: 0
   padding: 0
   box-sizing: border-box
-
-// Image Fixes
-img:not(.oversized)
-  width: auto
-  max-width: 100%
-  height: auto
 
 // Container & Row
 .container
@@ -34,7 +30,8 @@ img:not(.oversized)
 .responsive .container
   @extend %responsive
 
-.row
+.row,
+[class*='block-grid-']
   display: block
   padding: 0
   margin: 0 (-$gutter)
@@ -50,29 +47,19 @@ img:not(.oversized)
 [class*='block-grid-'] > li,
 [class*='block-grid-'] > .block-item
   position: relative
+  display: block
   float: left
   padding: 0 $gutter
   width: 100%
   min-height: 1px
+  height: auto
 
 // Block Grid
-[class*='block-grid-']
-  display: block
-  padding: 0
-  margin: 0 (-$gutter)
-
 ul[class*='block-grid-']
   list-style-type: none
 
-[class*='block-grid-'] > li,
-[class*='block-grid-'] > .block-item
-  display: block
-  position: relative
-  box-sizing: border-box
-  min-height: 1px
-  height: auto
-  float: left
-  padding: 0 $gutter
+// Flexbox Grid
+@import flex-grid
 
 // Standard columns - For all screen sizes (no media queries)
 +column-sizes('')

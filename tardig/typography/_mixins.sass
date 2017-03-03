@@ -1,42 +1,48 @@
-@function pow($num, $exp)
+// Round Decimals
+@function rounded($num)
+  @return round($num * 10000) / 10000
+
+// Convert to pixels for IE <= 8 support
+@function legacy($rem)
+  @return #{round($rem * $base-font-size)}px
+
+// Get Font Sizes
+@function pow($scale, $exp)
   $val: 1
   @if ($exp > 0)
     @for $i from 1 through $exp
-      $val: $val * $num
+      $val: $val * $scale
   @else if ($exp < 0)
     @for $i from 1 through -$exp
-      $val: $val / $num
-  @return $val
+      $val: $val / $scale
+  @return rounded($val)
 
-@function lineHeight($rem)
-  @if ($rem < 1)
-    @return $baseline-height
-  @else
-    @return ceil($rem / $baseline-height) * ($baseline-height / $rem)
+// Calculate Line Height
+@function calcLineHeight($baseline-height, $power)
+  $minLineHeight: 1.3
+  $maxLineHeight: 1.9
+  $font-size: pow($scale, $power)
+  $ratio: $baseline-height / $font-size
+  $increment: $baseline-height / 4
+  $newLineHeight: $baseline-height
+  @while ($ratio < $minLineHeight)
+    $newLineHeight: $newLineHeight + $increment
+    $ratio: $newLineHeight / $font-size
+  @while ($ratio > $maxLineHeight)
+    $newLineHeight: $newLineHeight - $increment
+    $ratio: $newLineHeight / $font-size
+  @return rounded($newLineHeight)
 
+// Declare Fonts
 =font($exp)
-  $rem: pow($ratio, $exp) * 1rem
-  $smallRem: $rem / $ratio
-  $leadRem: $rem * $ratio
+  $rem: pow($scale, $exp)
+  $lineHeight: calcLineHeight($baseline-height, $exp)
+  font-size: legacy($rem)
+  line-height: legacy($lineHeight)
+  font-size: #{$rem}rem
+  line-height: #{$lineHeight}rem
 
-  font:
-    size: $rem
-    @content
-  line-height: lineHeight($rem)
-
-  &.small, small, .small
-    font:
-      size: $rem / $ratio
-      @content
-    line-height: lineHeight($smallRem)
-
-  &.lead, .lead
-    font:
-      size: $rem * $ratio
-      @content
-    line-height: lineHeight($leadRem)
-
-
+// Text Alignment Classes
 =text-align($screen-size)
   .text#{$screen-size}-right
     text-align: right
@@ -54,7 +60,10 @@
     text-align-last: left
   .text#{$screen-size}-justify-last
     text-align-last: justify
+  .text#{$screen-size}-push-up
+    margin-top: -$baseline-height-rem
 
+// Text Transform Classes
 =text-transform($screen-size)
   .text#{$screen-size}-uppercase
     text-transform: uppercase
@@ -69,6 +78,7 @@
   .text#{$screen-size}-no-transform
     text-transform: none
 
+// Text Decoration CLasses
 =text-decoration($screen-size)
   .text#{$screen-size}-underline
     text-decoration: underline

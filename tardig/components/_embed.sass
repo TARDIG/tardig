@@ -1,0 +1,25 @@
+@import '../variables'
+@import 'mixins'
+
+// Responsive Embed
+[class*='embed-container']
+  position: relative
+  display: block
+  height: 0
+  padding: 0
+  padding-bottom: 75%
+  margin-bottom: $baseline-height-rem
+  overflow: hidden
+
+  .embed-item,
+  iframe, embed, object, video, audio
+    position: absolute
+    top: 0
+    left: 0
+    bottom: 0
+    border: 0
+    width: 100%
+    height: 100%
+
++embedRatio(16, 9)
++embedRatio(4, 3)

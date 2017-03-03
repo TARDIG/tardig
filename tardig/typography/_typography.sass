@@ -2,11 +2,87 @@
 @import 'mixins'
 @import 'custom'
 
+html, body
+  font-size: #{$base-font-size}px
+  line-height: $baseline-height
+
+a
+  background-color: transparent
+  -webkit-text-decoration-skip: objects
+
+sub,
+sup
+  font-size: 75%
+  line-height: 1px
+  position: relative
+  vertical-align: baseline
+
+sup
+  top: -.5em
+
+sub
+  bottom: -.25em
+
+pre,
+code,
+kbd,
+samp
+  font-size: 1rem
+
+abbr[title]
+  border-bottom: none
+  text-decoration: underline
+  text-decoration: underline dotted
+
+b,
+strong
+  font-weight: bold
+
+dfn,
+caption
+  font-style: italic
+
+hr
+  border: 0
+  border-top: 2px solid #000
+  height: 0
+
+table
+  border-collapse: collapse
+  border-spacing: 0
+  width: 100%
+  table-layout: fixed
+
+caption
+  text-align: left
+
+th,
+td
+  border-bottom: 1px solid #000
+  vertical-align: top
+
+thead th
+  vertical-align: bottom
+  border-bottom-width: 2px
+
 h1, h2, h3, h4, h5, h6, p, small,
 blockquote, figure, table, td, th,
 ul, ol, li, dd, dl, dt, details, hr,
-fieldset, pre
+fieldset, pre, caption
+  margin: 0 0 #{$baseline-height * $base-font-size}px
   margin: 0 0 $baseline-height-rem
+
+input,
+option,
+select,
+input[type="color"]
+  height: calc($baseline-height-rem + ($input-padding * 2))
+
+input[type="checkbox"],
+input[type="radio"]
+  display: inline-block
+  height: auto
+  width: auto
 
 h1, .h1
   +font(6)

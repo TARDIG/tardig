@@ -1,0 +1,9 @@
+// Get Embed Ratio
+@function ratio($width, $height)
+  @return percentage($height / $width)
+
+// Create Embed Ratio Classes
+=embedRatio($width, $height, $prefix: 'embed-container-')
+  $className: $prefix + $width + 'x' + $height
+  .#{$className}
+    padding-bottom: ratio($width, $height)

@@ -1,8 +1,4 @@
 // Breakpoints
-=break-xxs
-  @media only screen and (min-width: $breakpoint-xxs)
-    @content
-
 =break-xs
   @media only screen and (min-width: $breakpoint-xs)
     @content
@@ -32,19 +28,20 @@
 // Responsive
 %responsive
   +break-xs
-    width: 464px
+    width: $container-xs
   +break-sm
-    width: 750px
+    width: $container-sm
   +break-md
-    width: 970px
+    width: $container-md
   +break-lg
-    width: 1170px
+    width: $container-lg
 
 // Columns
 =column-sizes($screen-size)
   @for $i from 1 through $columns
     .col#{$screen-size}-#{$i}
       width: 100% / $columns * $i
+      flex: 0 0 (100% / $columns * $i)
       display: block
   .col#{$screen-size}-0
     width: 0
@@ -111,3 +108,7 @@
     display: inline-block
   .show#{$screen-size}-inline
     display: inline
+  .show#{$screen-size}-flex
+    display: flex
+  .show#{$screen-size}-inline-flex
+    display: inline-flex

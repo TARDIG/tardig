@@ -1,0 +1,57 @@
+// Flexbox
+.flex-media
+	display: flex
+	flex-direction: row
+	align-items: flex-start
+	flex: 1
+	.media-left
+		margin-right: $object-spacing
+	.media-right
+		margin-left: $object-spacing
+	.media-body
+		flex: 1
+	&.media-top, .media-top
+		align-items: flex-start
+		align-self: flex-start
+	&.media-middle, .media-middle
+		align-items: center
+		align-self: center
+	&.media-bottom, .media-bottom
+		align-items: flex-end
+		align-self: flex-end
+
+// Media Object
+.media
+	overflow: hidden
+	_overflow: visible
+	zoom: 1
+	.media-left
+		float: left
+		margin-right: $object-spacing
+	.media-right
+		float: right
+		margin-left: $object-spacing
+	.media-body
+		overflow: hidden
+
+// Flag Object
+.flag
+	display: table
+	.flag-left, .flag-body, .flag-right
+		display: table-cell
+		vertical-align: top
+	&.flag-top, .flag-top
+		vertical-align: top
+	&.flag-middle, .flag-middle
+		vertical-align: middle
+	&.flag-bottom, .flag-bottom
+		vertical-align: bottom
+	.flag-left
+		padding-right: $object-spacing
+	.flag-right
+		padding-left: $object-spacing
+
+.flex-media, .media, .flag
+	margin-bottom: $baseline-height-rem
+	& &
+		margin-bottom: 0
