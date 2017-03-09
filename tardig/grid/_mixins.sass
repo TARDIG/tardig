@@ -76,6 +76,8 @@
     .block-grid#{$screen-size}-#{$i} > li,
     .block-grid#{$screen-size}-#{$i} > .block-item
       width: 100% / $i
+    .block-grid#{$screen-size}-#{$i} > .block-item-2
+      width: 100% / $i * 2
       &:nth-of-type(1n)
         clear: none
       &:nth-of-type(#{$i}n + 1)

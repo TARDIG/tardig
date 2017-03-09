@@ -8,6 +8,9 @@
 .row,
 .row::before,
 .row::after,
+.flex-grid,
+.flex-grid::before,
+.flex-grid::after
 [class*='col-'],
 [class*='col-']::before,
 [class*='col-']::after,
@@ -31,6 +34,7 @@
   @extend %responsive
 
 .row,
+.flex-row,
 [class*='block-grid-']
   display: block
   padding: 0
@@ -39,6 +43,7 @@
 // Clearfix
 .container,
 .row,
+.flex-row,
 [class*='block-grid-']
   @extend %clearfix
 
