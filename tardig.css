@@ -7,7 +7,6 @@
  */
 /* Document
    ========================================================================== */
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,800|Poppins:300,400");
 html {
   font-family: sans-serif;
   /* 1 */
@@ -2448,45 +2447,6 @@ ul[class*='block-grid-'] {
     display: -webkit-inline-flex;
     display: -ms-inline-flexbox;
     display: inline-flex; } }
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Poppins', sans-serif; }
-
-p, a, ul, ol, li, div, th, td {
-  font-family: 'Open Sans', sans-serif; }
-
-h1, h2, h3, h4, p, a, ul, ol, li, div {
-  font-weight: 400; }
-
-h5, h6, td {
-  font-weight: 300; }
-
-th {
-  font-size: 20px;
-  line-height: 30px;
-  font-size: 1.2656rem;
-  line-height: 1.875rem;
-  font-weight: 800; }
-
-p {
-  letter-spacing: 0.025rem; }
-
-a {
-  text-decoration: none; }
-
-.example-typography h1, .example-typography h2, .example-typography h3, .example-typography h4, .example-typography h5, .example-typography h6, .example-typography p {
-  font-family: 'Poppins', sans-serif;
-  font-weight: 400; }
-
-header nav ul {
-  font-size: 20px;
-  line-height: 30px;
-  font-size: 1.2656rem;
-  line-height: 1.875rem;
-  font-family: 'Poppins', sans-serif;
-  font-weight: 300;
-  letter-spacing: 0.08rem;
-  margin: 1.5rem 0 0 0; }
 
 html, body {
   font-size: 16px;
